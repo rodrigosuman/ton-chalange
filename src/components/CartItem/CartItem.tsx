@@ -31,8 +31,7 @@ const CartItem: React.FC<TCartItemProps> = props => {
       <S.Container
         activeOpacity={1}
         onLongPress={handleLongPress}
-        onPressIn={handleOnPress}
-        delayLongPress={0.3}>
+        onPressIn={handleOnPress}>
         <S.ProductName>{product.name}</S.ProductName>
         <S.ProductPrice>{product.formatedPrice}</S.ProductPrice>
 
