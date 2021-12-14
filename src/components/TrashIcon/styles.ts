@@ -5,7 +5,7 @@ export const Container = styled.View``;
 export const Dot = styled.View`
   position: absolute;
   top: -5px;
-  right: -5px;
+  right: -2px;
   height: 18px;
   width: 18px;
   border-radius: 100px;

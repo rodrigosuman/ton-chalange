@@ -7,7 +7,7 @@ const TrashIcon: React.FC<{ length: number }> = props => {
 
   return (
     <S.Container>
-      <Icon name="trash" size={32} />
+      <Icon name="trash" size={34} />
       {length ? (
         <S.Dot>
           <S.LengthText>{length}</S.LengthText>
