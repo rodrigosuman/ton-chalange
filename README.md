@@ -2,7 +2,7 @@
 
 App desenvolvido com React Native para listagem de produtos e carrinho.
 
-*APK teste:*! [aqui](app-release.apk)
+*APK teste:* [aqui](app-release.apk)
 
 ### Features
 - Lista de produtos
