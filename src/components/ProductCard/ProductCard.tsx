@@ -19,7 +19,7 @@ const ProductCard: React.FC<TProductCardProps> = props => {
         />
       </S.ImageContainer>
       <S.ProductTitle>{product?.name}</S.ProductTitle>
-      <S.PriceTag>{product?.price}</S.PriceTag>
+      <S.PriceTag>{product?.formatedPrice}</S.PriceTag>
 
       {isSelected && (
         <S.CheckIconContainer>

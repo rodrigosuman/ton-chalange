@@ -34,7 +34,7 @@ const CartItem: React.FC<TCartItemProps> = props => {
         onPressIn={handleOnPress}
         delayLongPress={0.3}>
         <S.ProductName>{product.name}</S.ProductName>
-        <S.ProductPrice>{product.price}</S.ProductPrice>
+        <S.ProductPrice>{product.formatedPrice}</S.ProductPrice>
 
         {!callToPress && (
           <S.Dot onPress={() => removeProduct(product)}>

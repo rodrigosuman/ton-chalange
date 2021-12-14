@@ -3,6 +3,7 @@ export type TProduct = {
   name: string;
   price: number;
   currency: string;
+  formatedPrice?: string;
 };
 
 export type TProductsState = {

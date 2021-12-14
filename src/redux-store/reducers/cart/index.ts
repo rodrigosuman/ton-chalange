@@ -1,10 +1,14 @@
 import { Reducer } from 'redux';
+import useCurrencyFormater from '../../../hooks/useCurrencyFormater';
 import actions from '../../constants/actions';
 import { TProduct } from '../products/types';
 import { TCartState } from './types';
 
+const { format } = useCurrencyFormater('BRL');
+
 export const INITIAL_STATE: TCartState = {
   data: [],
+  formatedTotal: 'R$ 0,00',
   total: 0,
 };
 
@@ -31,15 +35,25 @@ const reducer: Reducer<TCartState, { type: string; payload: any }> = (
           product => product.id !== _product.id,
         );
 
-        return { ...state, data: _products, total: makeTotal(_products) };
+        const total = makeTotal(_products);
+
+        return {
+          ...state,
+          data: _products,
+          total,
+          formatedTotal: format(total),
+        };
       }
 
       const _products = [...state.data, action.payload?.product];
 
+      const total = makeTotal(_products);
+
       return {
         ...state,
         data: [...state.data, action.payload?.product],
-        total: makeTotal(_products),
+        total,
+        formatedTotal: format(total),
       };
     }
 
@@ -51,9 +65,13 @@ const reducer: Reducer<TCartState, { type: string; payload: any }> = (
         product => !productListToDelete.find(item => item.id === product.id),
       );
 
+      const total = makeTotal(_products);
+
       return {
         ...state,
+        total,
         data: _products,
+        formatedTotal: format(total),
       };
     }
 

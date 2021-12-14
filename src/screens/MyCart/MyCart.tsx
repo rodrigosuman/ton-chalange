@@ -10,7 +10,7 @@ import { TProduct } from '../../redux-store/reducers/products/types';
 import * as S from './styles';
 
 const MyCart: React.FC = () => {
-  const { data: cartData, total } = useSelector(state => state.cart);
+  const { data: cartData, formatedTotal } = useSelector(state => state.cart);
   const [productListToDelete, setProductListToDelete] = React.useState<
     TProduct[]
   >([]);
@@ -99,7 +99,7 @@ const MyCart: React.FC = () => {
       </S.Container>
       <S.AmountContainer>
         <S.AmountDetailsText>Total</S.AmountDetailsText>
-        <S.AmountText>{total}</S.AmountText>
+        <S.AmountText>{formatedTotal}</S.AmountText>
       </S.AmountContainer>
     </React.Fragment>
   );

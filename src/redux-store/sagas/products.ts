@@ -21,7 +21,7 @@ export function* getAllProducts(): Generator<any, any, any> {
         products.map((product, index) => ({
           ...product,
           name: `${product.name} ${index + 1}`,
-          price: useCurrencyFormater('BRL').format(product.price),
+          formatedPrice: useCurrencyFormater('BRL').format(product.price),
           id: uuidV4(),
         })),
       ),
