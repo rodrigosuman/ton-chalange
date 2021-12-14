@@ -9,11 +9,11 @@ import { TProduct } from '../../redux-store/reducers/products/types';
 import * as S from './styles';
 
 const ProductList: React.FC = () => {
-  const products = useSelector(state => state.products.data);
+  const { data: products, isLoading } = useSelector(state => state.products);
   const cart = useSelector(state => state.cart.data);
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
+  const dispatchAsycGetAllProducts = React.useCallback(() => {
     dispatch(asyncGetAllProducts());
   }, [dispatch]);
 
@@ -31,6 +31,10 @@ const ProductList: React.FC = () => {
     [cart],
   );
 
+  React.useEffect(() => {
+    dispatchAsycGetAllProducts();
+  }, [dispatchAsycGetAllProducts]);
+
   return (
     <S.Container>
       <FlatList
@@ -47,6 +51,8 @@ const ProductList: React.FC = () => {
         ItemSeparatorComponent={() => <S.ItemSeparator />}
         ListFooterComponent={() => <S.Footer />}
         contentContainerStyle={{ padding: 15 }}
+        refreshing={isLoading}
+        onRefresh={dispatchAsycGetAllProducts}
       />
     </S.Container>
   );
