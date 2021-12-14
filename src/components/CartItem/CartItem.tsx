@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Vibration, View } from 'react-native';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import { useDispatch } from 'react-redux';
 import { toogleProductCart } from '../../redux-store/actions/cart';
@@ -19,7 +19,12 @@ const CartItem: React.FC<TCartItemProps> = props => {
   );
 
   const handleLongPress = React.useMemo(() => {
-    return !callToPress ? () => onLongPress?.(product) : undefined;
+    return !callToPress
+      ? () => {
+          Vibration.vibrate(300);
+          onLongPress?.(product);
+        }
+      : undefined;
   }, [callToPress, onLongPress, product]);
 
   const handleOnPress = React.useMemo(() => {
