@@ -14,8 +14,6 @@ export function* getAllProducts(): Generator<any, any, any> {
       ),
     );
 
-    console.log({ products });
-
     yield put(
       setProducts(
         products.map((product, index) => ({
